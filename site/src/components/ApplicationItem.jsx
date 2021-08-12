@@ -1,10 +1,14 @@
-import {useRef} from "react";
-import {applyForLoan} from "../utils/database";
+import {useEffect, useRef, useState} from "react";
+import {applyForLoan, getLoanApplications, getLoanStatus} from "../utils/database";
 
-function LoanApplication() {
+function ApplicationItem() {
 
     const loanAmount = useRef(HTMLInputElement)
     const loanDescription = useRef(HTMLTextAreaElement)
+
+    getLoanStatus()
+
+    const [applications, setApplications] = useState([])
 
     //TODO: make the account type check work
     // if(accountType != Accounts.BORROWER) return <Redirect to="/home"/>
@@ -20,12 +24,9 @@ function LoanApplication() {
     }
 
     return (<div>
-        <p>How much do you need to loan?</p> <input type={"text"} ref={loanAmount}/>
-        <p>Please describe what you need this loan for:</p>
-        <textarea ref={loanDescription}/>
-        <button onClick={apply}>Submit Loan Application</button>
+
     </div>)
 
 }
 
-export default LoanApplication;
+export default ApplicationIteam;
