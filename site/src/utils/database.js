@@ -1,7 +1,7 @@
 import {Accounts} from "../types/accounts";
 
-export var createNewAccount = (username, password, accountType) => {
-
+export var createNewAccount = (username, password, accountType, firstName, lastName, accountNumber, routingNumber) => {
+    return true
 }
 
 export var authenticateAccount = (username, password, accountType) => {
