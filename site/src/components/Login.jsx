@@ -1,22 +1,25 @@
 import React, {useRef, useState} from 'react';
 import {authenticateAccount} from "../utils/database";
 import {Accounts} from "../types/accounts";
+import {loggedIn, setLoggedIn, setPassword, setUsername} from "../index";
 
-function Login({navigation}){
-    const[user, setUser] = useState('');
-    const[pass, setPass] = useState('');
-    const[loggedIn, setLoggedIn] = useState(false);
-
+function Login(){
     const [errorMessage, setErrorMessage] = useState("")
 
     const usernameRef = useRef(HTMLInputElement)
     const passwordRef = useRef(HTMLInputElement)
     const accountTypeRef = useRef(HTMLSelectElement)
 
+    if(loggedIn) {
+    //    redirect to homepage
+    }
+
     const login = () => {
         if(usernameRef == null || passwordRef == null || accountTypeRef == null) return
         if (authenticateAccount(usernameRef.current.value, passwordRef.current.value, accountTypeRef.current.value)) {
-            //    do login things
+            setUsername(usernameRef.current.value)
+            setPassword(usernameRef.current.value)
+            setLoggedIn(true)
             //    redirect to main page
         } else {
             setErrorMessage("Login Failed, please try again")
@@ -31,8 +34,8 @@ function Login({navigation}){
                 <option value={Accounts.BORROWER}>Borrower</option>
                 <option value={Accounts.INVESTOR}>Investor</option>
             </select>
-            <p> Enter Username </p> <input ref={usernameRef}/>
-            <p> Enter Password</p> <input ref={passwordRef}/>
+            <p> Enter Username </p> <input ref={usernameRef} type={"text"}/>
+            <p> Enter Password</p> <input ref={passwordRef} type={"password"}/>
             <h1>{errorMessage}</h1>
             <button onClick={login}>Login</button>
         </div>
