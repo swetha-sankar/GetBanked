@@ -1,7 +1,7 @@
 import React, {useRef, useState} from 'react';
 import {authenticateAccount} from "../utils/database";
 import {Accounts} from "../types/accounts";
-import {Redirect} from "react-router-dom";
+import {Redirect, Route} from "react-router-dom";
 
 function Login(){
     const [errorMessage, setErrorMessage] = useState("")
@@ -20,7 +20,7 @@ function Login(){
             // setUsername(usernameRef.current.value)
             // setPassword(usernameRef.current.value)
             // setLoggedIn(true)
-            return <Redirect to={"/home/"}/>
+        //    redirect to homepage
         } else {
             setErrorMessage("Login Failed, please try again")
         }
