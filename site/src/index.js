@@ -4,10 +4,6 @@ import createRoutes from './routes.js'
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 
-export const [loggedIn, setLoggedIn] = useState(false)
-export const [username, setUsername] = useState("")
-export const [password, setPassword] = useState("")
-
 const routes = createRoutes();
 
 ReactDOM.render(

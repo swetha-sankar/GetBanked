@@ -1,7 +1,7 @@
 import React, {useRef, useState} from 'react';
 import {authenticateAccount} from "../utils/database";
 import {Accounts} from "../types/accounts";
-import {loggedIn, setLoggedIn, setPassword, setUsername} from "../index";
+import {Redirect} from "react-router-dom";
 
 function Login(){
     const [errorMessage, setErrorMessage] = useState("")
@@ -10,17 +10,17 @@ function Login(){
     const passwordRef = useRef(HTMLInputElement)
     const accountTypeRef = useRef(HTMLSelectElement)
 
-    if(loggedIn) {
-    //    redirect to homepage
-    }
+    // if(loggedIn) {
+    //     return <Redirect to={"/home/"}/>
+    // }
 
     const login = () => {
         if(usernameRef == null || passwordRef == null || accountTypeRef == null) return
         if (authenticateAccount(usernameRef.current.value, passwordRef.current.value, accountTypeRef.current.value)) {
-            setUsername(usernameRef.current.value)
-            setPassword(usernameRef.current.value)
-            setLoggedIn(true)
-            //    redirect to main page
+            // setUsername(usernameRef.current.value)
+            // setPassword(usernameRef.current.value)
+            // setLoggedIn(true)
+            return <Redirect to={"/home/"}/>
         } else {
             setErrorMessage("Login Failed, please try again")
         }
