@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Redirect, useLocation } from 'r
 
 import Home from './components/Home'
 import Login from './components/Login'
+import LoanApplication from "./components/LoanApplication";
 
 const createRoutes = () => (
     <Router>
@@ -17,6 +18,10 @@ const createRoutes = () => (
 
             <Route exact path="/">
                 <Redirect to="/home"/>
+            </Route>
+
+            <Route exact path="/apply">
+                <LoanApplication />
             </Route>
 
             <Route path="*">

@@ -1,4 +1,4 @@
-import {useEffect, useRef} from "react";
+import {useRef} from "react";
 import {applyForLoan} from "../utils/database";
 
 
@@ -6,6 +6,9 @@ function LoanApplication() {
 
     const loanAmount = useRef(HTMLInputElement)
     const loanDescription = useRef(HTMLTextAreaElement)
+
+    //TODO: make the account type check work
+    // if(accountType != Accounts.BORROWER) return <Redirect to="/home"/>
 
     const apply = () => {
         if(loanAmount == null || loanDescription == null) return
