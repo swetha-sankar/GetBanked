@@ -5,9 +5,9 @@ function Home() {
 
  return (
    <div>
-     <p>You donated {data} times</p>
+     <p>You've invested $ {data} </p>
      <button onClick={() => setData(data + 1)}>
-       Click here and donate a dollar
+       Click here and invest a dollar
      </button>
    </div>
  );
