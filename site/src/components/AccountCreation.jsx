@@ -25,11 +25,14 @@ const useStyles = makeStyles(theme => ({
 }));
 const AccountCreation = (accountType) => {
     const classes = useStyles();
-    const [pass, setPass] = useState('');
+    // React hook form
     const {handleSubmit, control} = useForm();
+    // Set form elements
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
+    const [username, setUsername] = useState('');
+    const [pass, setPass] = useState('');
 
     const onSubmit = data => {
         console.log(data);
@@ -73,6 +76,7 @@ const AccountCreation = (accountType) => {
                     )}
                     rules={{required: 'First name required'}}
                 />
+
                 <Controller
                     name="email"
                     control={control}
@@ -90,6 +94,23 @@ const AccountCreation = (accountType) => {
                         />
                     )}
                     rules={{required: 'Email required'}}
+                />
+                <Controller
+                    name="username"
+                    control={control}
+                    defaultValue=""
+                    render={({field: {onChange, value}, fieldState: {error}}) => (
+                        <TextField
+                            label="Username"
+                            variant="filled"
+                            value={value}
+                            onChange = {onChange}
+                            onChangeText={text => setUsername({username: text})}
+                            error={!!error}
+                            helperText={error ? error.message : null}
+                        />
+                    )}
+                    rules={{required: 'First name required'}}
                 />
                 <Controller
                     name="password"
