@@ -1,1 +1,0 @@
-// todo: create navigator between screens of app
