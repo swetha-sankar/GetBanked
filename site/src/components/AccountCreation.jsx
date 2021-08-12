@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
         },
     },
 }));
-const AccountCreation = (accountType) => {
+const AccountCreation = ({accountType}) => {
     const classes = useStyles();
     // React hook form
     const {handleSubmit, control} = useForm();
@@ -40,8 +40,8 @@ const AccountCreation = (accountType) => {
     return (
         <>
             <form className={classes.root} onSubmit={handleSubmit(onSubmit)}>
-                <h1>Account Creation</h1>
-                <h2> Investor</h2>
+                <h1>Create Account</h1>
+                <h2> {accountType}</h2>
                 <Controller
                     name="First Name"
                     control={control}
