@@ -1,16 +1,18 @@
 import React, {useState} from 'react';
 import ReactDOM from 'react-dom';
+import createRoutes from './routes.js'
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 export const [loggedIn, setLoggedIn] = useState(false)
 export const [username, setUsername] = useState("")
 export const [password, setPassword] = useState("")
 
+const routes = createRoutes();
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    {routes}
   </React.StrictMode>,
   document.getElementById('root')
 );
