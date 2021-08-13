@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/GetBanked/static/css/main.9601791e.chunk.css",
+    "main.js": "/GetBanked/static/js/main.10893912.chunk.js",
+    "main.js.map": "/GetBanked/static/js/main.10893912.chunk.js.map",
+    "runtime-main.js": "/GetBanked/static/js/runtime-main.9b98dab2.js",
+    "runtime-main.js.map": "/GetBanked/static/js/runtime-main.9b98dab2.js.map",
+    "static/css/2.818011ed.chunk.css": "/GetBanked/static/css/2.818011ed.chunk.css",
+    "static/js/2.17edfe4e.chunk.js": "/GetBanked/static/js/2.17edfe4e.chunk.js",
+    "static/js/2.17edfe4e.chunk.js.map": "/GetBanked/static/js/2.17edfe4e.chunk.js.map",
+    "static/js/3.04ecea41.chunk.js": "/GetBanked/static/js/3.04ecea41.chunk.js",
+    "static/js/3.04ecea41.chunk.js.map": "/GetBanked/static/js/3.04ecea41.chunk.js.map",
+    "index.html": "/GetBanked/index.html",
+    "static/css/2.818011ed.chunk.css.map": "/GetBanked/static/css/2.818011ed.chunk.css.map",
+    "static/css/main.9601791e.chunk.css.map": "/GetBanked/static/css/main.9601791e.chunk.css.map",
+    "static/js/2.17edfe4e.chunk.js.LICENSE.txt": "/GetBanked/static/js/2.17edfe4e.chunk.js.LICENSE.txt",
+    "static/media/alice.0c731870.jpg": "/GetBanked/static/media/alice.0c731870.jpg",
+    "static/media/c1logo.d0b02c1e.png": "/GetBanked/static/media/c1logo.d0b02c1e.png",
+    "static/media/pratham.559b8970.png": "/GetBanked/static/media/pratham.559b8970.png",
+    "static/media/rohan.6c0cf4ca.png": "/GetBanked/static/media/rohan.6c0cf4ca.png",
+    "static/media/swetha.f0ad7e09.jpg": "/GetBanked/static/media/swetha.f0ad7e09.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.9b98dab2.js",
+    "static/css/2.818011ed.chunk.css",
+    "static/js/2.17edfe4e.chunk.js",
+    "static/css/main.9601791e.chunk.css",
+    "static/js/main.10893912.chunk.js"
+  ]
+}
