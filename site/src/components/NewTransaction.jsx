@@ -18,11 +18,8 @@ export default function NewTransaction() {
     }
 
     useEffect(() => {
-        console.log('useEffect started')
         api.getAccount(globalStateValue['username'])
             .then(userData => setUser(userData))
-        console.log(user)
-        console.log('useEffect finished')
     }, [globalStateValue['username']])
 
     if (!user) {
@@ -31,7 +28,6 @@ export default function NewTransaction() {
 
     return (
         <>
-            <Header />
             <br />
             <br />
             <form className={classes.root}>
