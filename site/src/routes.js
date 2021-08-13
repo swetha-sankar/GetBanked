@@ -5,6 +5,7 @@ import Home from './components/Home'
 import Login from './components/Login'
 import LoanApplication from "./components/LoanApplication";
 import AccountCreation from './components/AccountCreation'
+import NewTransaction from './components/NewTransaction'
 import MyApplications from "./components/MyApplications";
 import Header from './components/Header'
 import Footer from './components/Footer'
@@ -36,6 +37,10 @@ const createRoutes = () => (
 
             <Route exact path ="/account-creation">
                 <AccountCreation />
+            </Route>
+
+            <Route exact path ="/new-transaction">
+                <NewTransaction />
             </Route>
 
             <Route exact path="/about">

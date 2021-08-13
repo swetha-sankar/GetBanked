@@ -213,10 +213,9 @@ export async function updateUserTransactions(username, transactionId, transactio
     // Update the user's total investments/loans based on the transaction
     // Get the user's old total in their account
     const accountResponse = await getAccount(username);
-    const accountBody = await accountResponse.json();
-    const oldTotal = accountBody.total;
+    const oldTotal = await accountResponse.total;
     
-    const updateTotal = await updateUserTotal(username, oldTotal + transactionAmount );
+    const updateTotal = await updateUserTotal(username, oldTotal + transactionAmount * (transactionType === 'investment' ? -1 : 1));
 
     return body
 }
@@ -230,11 +229,11 @@ export async function updateUserTransactions(username, transactionId, transactio
  */
 export async function updateUserTotal(username, newTotal) {
     const requestOptions = {
-        method: 'PATCH',
+        method: 'PUT',
         body: newTotal
     }
 
-    const response = await fetch(`https://get-banked-62777-default-rtdb.firebaseio.com/accounts/${encodeURIComponent(username)}/.json`, requestOptions)
+    const response = await fetch(`https://get-banked-62777-default-rtdb.firebaseio.com/accounts/${encodeURIComponent(username)}/total/.json`, requestOptions)
     const body = await response.json()
 
     return body
