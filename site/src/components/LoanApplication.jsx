@@ -1,5 +1,5 @@
 import {useRef} from "react";
-import {applyForLoan} from "../utils/database";
+// import {applyForLoan} from "../utils/database";
 
 function LoanApplication() {
 
@@ -12,10 +12,10 @@ function LoanApplication() {
     const apply = () => {
         if(loanAmount == null || loanDescription == null) return
         //TODO: Implement real username
-        applyForLoan("username", {
-            amount: loanAmount.current.value,
-            description: loanDescription.current.value
-        })
+        // applyForLoan("username", {
+        //     amount: loanAmount.current.value,
+        //     description: loanDescription.current.value
+        // })
         //TODO: redirect to confirmation page
     }
 
