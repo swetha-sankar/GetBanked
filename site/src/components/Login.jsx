@@ -17,7 +17,8 @@ const Login = () => {
     const [pass, setPass] = useState('');
 
     const onSubmit = () => {
-        api.getAccount(globalStateValue['username'])
+        console.log(globalStateValue['username'])
+        console.log(api.getAccount(globalStateValue['username']))
     };
     return (
         <>
