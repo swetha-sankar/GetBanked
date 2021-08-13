@@ -8,4 +8,4 @@ One such community that has lower access is young adults: Both young adults with
 young adults from lower-income backgrounds looking to gain financial power and literacy.
 
 So, we set out to think about how might we create an intuitive and responsive tool to enable young adults to start their financial journey.
-Here is the link to the deployed website: 
+Here is the link to the deployed website: https://swetha-sankar.github.io/GetBanked/home 
