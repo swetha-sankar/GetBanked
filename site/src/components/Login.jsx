@@ -1,74 +1,44 @@
-import React, {useState, useEffect} from 'react';
-import logo from '../assets/c1logo.png';
-import {makeStyles, createStyles, Button, TextField} from "@material-ui/core";
-import {useForm, Controller} from "react-hook-form";
+import React, {useState} from 'react';
+import {makeStyles, Button, TextField} from "@material-ui/core";
 import Header from '../components/Header';
 import {Link as RouterLink} from "react-router-dom";
+import * as api from '../utils/api'
+import { useGlobalState } from '../state';
 
 /**
  * Login
  *
  */
 
-
 const Login = () => {
     const classes = useStyles();
-    // React hook form
-    const {handleSubmit, control} = useForm();
     // Set form elements
-    const [username, setUsername] = useState('');
+    const [globalStateValue, globalStateUpdate] = useGlobalState('username');
     const [pass, setPass] = useState('');
 
-    const onSubmit = data => {
-        console.log(data);
+    const onSubmit = () => {
+        console.log(globalStateValue['username'])
+        console.log(api.getAccount(globalStateValue['username']))
     };
     return (
         <>
             <Header/>
             <br/>
             <br/>
-            <form className={classes.root} onSubmit={handleSubmit(onSubmit)}>
+            <form className={classes.root}>
                 <h1>Login</h1>
-                <Controller
-                    name="username"
-                    control={control}
-                    defaultValue=""
-                    render={({field: {onChange, value}, fieldState: {error}}) => (
-                        <TextField
-                            label="Username"
-                            variant="filled"
-                            value={value}
-                            onChange = {onChange}
-                            onChangeText={text => setUsername({username: text})}
-                            error={!!error}
-                            helperText={error ? error.message : null}
-                        />
-                    )}
-                    rules={{required: 'Username required'}}
+                <TextField
+                    label="Username"
+                    variant="filled"
+                    onChange={event => globalStateUpdate({ username: event.target.value })}
                 />
-                <Controller
-                    name="password"
-                    control={control}
-                    defaultValue=""
-                    render={({field: {onChange, value}, fieldState: {error}}) => (
-                        <TextField
-                            underlineShow={false}
-                            required
-                            value={value}
-                            variant="filled"
-                            type={'password'}
-                            onChange = {onChange}
-                            placeholder={'Password'}
-                            helperText={error ? error.message : null}
-                            error={!!error}
-                            onChangeText={text => setPass({pass: text})}
-                            inputStyle={{color: 'white', padding: '0 25px'}}
-                        />
-
-                    )}
-                    rules={{required: 'Password required'}}
+                <TextField
+                    label="Password"
+                    variant="filled"
+                    type={'password'}
+                    onChange={event => setPass(event.target.value)}
                 />
-                <Button variant="contained" color="primary" size = 'medium' {...{
+                <Button onClick={onSubmit} variant="contained" color="primary" size = 'medium' {...{
                         color: "inherit",
                         to: '/home',
                         component: RouterLink,
