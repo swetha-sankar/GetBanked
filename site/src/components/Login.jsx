@@ -3,6 +3,7 @@ import logo from '../assets/c1logo.png';
 import {makeStyles, createStyles, Button, TextField} from "@material-ui/core";
 import {useForm, Controller} from "react-hook-form";
 import Header from '../components/Header';
+import {Link as RouterLink} from "react-router-dom";
 
 /**
  * Login
@@ -67,9 +68,11 @@ const Login = () => {
                     )}
                     rules={{required: 'Password required'}}
                 />
-
-
-                <Button variant="contained" color="primary" size = 'medium'>
+                <Button variant="contained" color="primary" size = 'medium' {...{
+                        color: "inherit",
+                        to: '/home',
+                        component: RouterLink,
+                    }} >
                     Submit
                 </Button>
             </form>
