@@ -16,6 +16,10 @@ const headerData = [
         href: "/about",
     },
     {
+        label: "Manage Account",
+        href: "manage"
+    },
+    {
         label: "Create Account",
         href: "/account-creation",
     },
