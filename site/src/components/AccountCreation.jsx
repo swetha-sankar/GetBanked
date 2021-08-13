@@ -1,131 +1,69 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import logo from '../assets/c1logo.png';
-import {makeStyles, createStyles, Button, TextField} from "@material-ui/core";
-import {useForm, Controller} from "react-hook-form";
+import {makeStyles, Button, TextField, Select} from "@material-ui/core";
 import Header from '../components/Header';
+import * as api from '../utils/api'
 
 /**
  * Account creation form
- * @param accountType: Takes in account type (ex. borrower, investor)
  *
  */
-const AccountCreation = ({accountType}) => {
+const AccountCreation = () => {
     const classes = useStyles();
-    // React hook form
-    const {handleSubmit, control} = useForm();
     // Set form elements
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [username, setUsername] = useState('');
     const [pass, setPass] = useState('');
+    const [type, setType] = useState('investor')
 
-    const onSubmit = data => {
-        console.log(data);
+    const onSubmit = () => {
+        console.log(api.createAccount(username, type, firstName + ' ' + lastName, email, pass))
     };
     return (
         <>
             <Header/>
             <br/>
             <br/>
-            <form className={classes.root} onSubmit={handleSubmit(onSubmit)}>
+            <form className={classes.root}>
                 <h1>Create Account</h1>
-                <h2> {accountType}</h2>
-                <Controller
-                    name="First Name"
-                    control={control}
-                    defaultValue=""
-                    render={({field: {onChange, value}, fieldState: {error}}) => (
-                        <TextField
-                            label="First Name"
-                            variant="filled"
-                            value={value}
-                            onChange = {onChange}
-                            onChangeText={text => setFirstName({firstName: text})}
-                            error={!!error}
-                            helperText={error ? error.message : null}
-                        />
-                    )}
-                    rules={{required: 'First name required'}}
+                <TextField
+                    label="First Name"
+                    variant="filled"
+                    onChange={event => setFirstName(event.target.value)}
                 />
-                <Controller
-                    name="Last Name"
-                    control={control}
-                    defaultValue=""
-                    render={({field: {onChange, value}, fieldState: {error}}) => (
-                        <TextField
-                            label="Last Name"
-                            variant="filled"
-                            value={value}
-                            onChange = {onChange}
-                            onChangeText={text => setLastName({lastName: text})}
-                            error={!!error}
-                            helperText={error ? error.message : null}
-                        />
-                    )}
-                    rules={{required: 'Last name required'}}
+                <Select
+                    label="Account Type"
+                    defaultValue={type}
+                    onChange={event => setType(event.target.value)}
+                >
+                    <option value="investor">Investor</option>
+                    <option value="borrower">Borrower</option>
+                </Select>
+                <TextField
+                    label="Last Name"
+                    variant="filled"
+                    onChange={event => setLastName(event.target.value)}
                 />
-
-                <Controller
-                    name="email"
-                    control={control}
-                    defaultValue=""
-                    render={({field: {onChange, value}, fieldState: {error}}) => (
-                        <TextField
-                            label="Email"
-                            variant="filled"
-                            value={value}
-                            onChange = {onChange}
-                            onChangeText={text => setEmail({email: text})}
-                            error={!!error}
-                            helperText={error ? error.message : null}
-                            type="email"
-                        />
-                    )}
-                    rules={{required: 'Email required'}}
+                <TextField
+                    label="Email"
+                    variant="filled"
+                    type={'email'}
+                    onChange={event => setEmail(event.target.value)}
                 />
-                <Controller
-                    name="username"
-                    control={control}
-                    defaultValue=""
-                    render={({field: {onChange, value}, fieldState: {error}}) => (
-                        <TextField
-                            label="Username"
-                            variant="filled"
-                            value={value}
-                            onChange = {onChange}
-                            onChangeText={text => setUsername({username: text})}
-                            error={!!error}
-                            helperText={error ? error.message : null}
-                        />
-                    )}
-                    rules={{required: 'Username required'}}
+                <TextField
+                    label="Username"
+                    variant="filled"
+                    onChange={event => setUsername(event.target.value)}
                 />
-                <Controller
-                    name="password"
-                    control={control}
-                    defaultValue=""
-                    render={({field: {onChange, value}, fieldState: {error}}) => (
-                        <TextField
-                            underlineShow={false}
-                            required
-                            value={value}
-                            variant="filled"
-                            type={'password'}
-                            onChange = {onChange}
-                            placeholder={'Password'}
-                            helperText={error ? error.message : null}
-                            error={!!error}
-                            onChangeText={text => setPass({pass: text})}
-                            inputStyle={{color: 'white', padding: '0 25px'}}
-                        />
-
-                    )}
-                    rules={{required: 'Password required'}}
+                <TextField
+                    label="Password"
+                    variant="filled"
+                    type={'password'}
+                    onChange={event => setPass(event.target.value)}
                 />
-
-
-                <Button variant="contained" color="primary" size = 'medium'>
+                <Button onClick={onSubmit} variant="contained" color="primary" size = 'medium'>
                     Submit
                 </Button>
             </form>
