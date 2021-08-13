@@ -25,7 +25,6 @@ const AccountCreation = ({accountType}) => {
     };
     return (
         <>
-            <Header/>
             <br/>
             <br/>
             <form className={classes.root} onSubmit={handleSubmit(onSubmit)}>

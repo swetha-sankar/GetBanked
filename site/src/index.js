@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import createRoutes from './routes.js'
 import './index.css';
+import 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter as Router } from "react-router-dom";
 const routes = createRoutes();
