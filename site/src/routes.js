@@ -5,6 +5,7 @@ import Home from './components/Home'
 import Login from './components/Login'
 import LoanApplication from "./components/LoanApplication";
 import AccountCreation from './components/AccountCreation'
+import MyApplications from "./components/MyApplications";
 
 const createRoutes = () => (
     <Router>
@@ -23,6 +24,10 @@ const createRoutes = () => (
 
             <Route exact path="/apply">
                 <LoanApplication />
+            </Route>
+
+            <Route exact path="/manage">
+                <MyApplications />
             </Route>
 
             <Route exact path ="/account-creation">
