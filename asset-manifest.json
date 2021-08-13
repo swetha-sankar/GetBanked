@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/GetBanked/static/css/main.9601791e.chunk.css",
-    "main.js": "/GetBanked/static/js/main.10893912.chunk.js",
-    "main.js.map": "/GetBanked/static/js/main.10893912.chunk.js.map",
+    "main.js": "/GetBanked/static/js/main.44141c90.chunk.js",
+    "main.js.map": "/GetBanked/static/js/main.44141c90.chunk.js.map",
     "runtime-main.js": "/GetBanked/static/js/runtime-main.9b98dab2.js",
     "runtime-main.js.map": "/GetBanked/static/js/runtime-main.9b98dab2.js.map",
     "static/css/2.818011ed.chunk.css": "/GetBanked/static/css/2.818011ed.chunk.css",
@@ -25,6 +25,6 @@
     "static/css/2.818011ed.chunk.css",
     "static/js/2.17edfe4e.chunk.js",
     "static/css/main.9601791e.chunk.css",
-    "static/js/main.10893912.chunk.js"
+    "static/js/main.44141c90.chunk.js"
   ]
 }
