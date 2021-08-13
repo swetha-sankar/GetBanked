@@ -15,7 +15,9 @@ function MyApplications() {
             let account = await getAccount(globalStateValue["username"])
             let t = Object.keys(account.transactions)
             for(let i = 1; i < t.length; i++) {
-                transactions.push(<ApplicationItem txn={await getTransaction(t[i])} key={i}/>)
+                if (account.transactions[t[i]]) {
+                    transactions.push(<ApplicationItem txn={await getTransaction(t[i])} key={i}/>)
+                }
             }
             if(!loaded) setApplications(transactions)
             setLoaded(true)
