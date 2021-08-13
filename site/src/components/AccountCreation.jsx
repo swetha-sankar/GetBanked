@@ -3,26 +3,11 @@ import logo from '../assets/c1logo.png';
 import {makeStyles, createStyles, Button, TextField} from "@material-ui/core";
 import {useForm, Controller} from "react-hook-form";
 
-const useStyles = makeStyles(theme => ({
-    root: {
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding: theme.spacing(3),
-
-
-        '& .MuiTextField-root': {
-            margin: theme.spacing(1),
-            width: '300px',
-            borderRadius: 20,
-
-        },
-        '& .MuiButtonBase-root': {
-            margin: theme.spacing(2),
-        },
-    },
-}));
+/**
+ * Account creation form
+ * @param accountType: Takes in account type (ex. borrower, investor)
+ *
+ */
 const AccountCreation = ({accountType}) => {
     const classes = useStyles();
     // React hook form
@@ -74,7 +59,7 @@ const AccountCreation = ({accountType}) => {
                             helperText={error ? error.message : null}
                         />
                     )}
-                    rules={{required: 'First name required'}}
+                    rules={{required: 'Last name required'}}
                 />
 
                 <Controller
@@ -110,7 +95,7 @@ const AccountCreation = ({accountType}) => {
                             helperText={error ? error.message : null}
                         />
                     )}
-                    rules={{required: 'First name required'}}
+                    rules={{required: 'Username required'}}
                 />
                 <Controller
                     name="password"
@@ -143,4 +128,25 @@ const AccountCreation = ({accountType}) => {
         </>
     );
 }
+
+const useStyles = makeStyles(theme => ({
+    root: {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: theme.spacing(3),
+
+
+        '& .MuiTextField-root': {
+            margin: theme.spacing(1),
+            width: '300px',
+            borderRadius: 20,
+
+        },
+        '& .MuiButtonBase-root': {
+            margin: theme.spacing(2),
+        },
+    },
+}));
 export default AccountCreation;
