@@ -1,11 +1,11 @@
 import {AppBar, Button, Toolbar, Typography, makeStyles} from "@material-ui/core"
 import React from "react";
-import {Link as RouterLink} from "react-router-dom";
+import {Link} from "react-router-dom";
 
 const headerData = [
     {
-        label: "Home",
-        href: "/home",
+        label: "Create Account",
+        href: "/account-creation",
     },
     {
         label: "New Transaction",
@@ -19,20 +19,18 @@ const headerData = [
         label: "About Us",
         href: "/about",
     },
-    {
-        label: "Create Account",
-        href: "/account-creation",
-    },
 ];
 
 
 export default function Header() {
-    const { header, title } = useStyles();
+    const { header, title, toolbar, button } = useStyles();
     const displayDesktop = () => {
         return (
-            <Toolbar>
-                {appTitle}
-                {createButtons()}
+            <Toolbar className={toolbar}>
+                <Link to="/home" style={{textDecoration: "none"}}>{appTitle}</Link>
+                <div>
+                    {createButtons()}
+                </div>
             </Toolbar>
         );
     };
@@ -51,8 +49,9 @@ export default function Header() {
                         key: label,
                         color: "inherit",
                         to: href,
-                        component: RouterLink,
-                    }} >
+                        component: Link,
+                    }} 
+                    className={button}>
                     {label}
                 </Button>
             );
@@ -60,20 +59,28 @@ export default function Header() {
     };
     return (
         <header>
-            <AppBar className={header}> {displayDesktop()} </AppBar>
+            <AppBar position="static" className={header}> {displayDesktop()} </AppBar>
         </header>
     );
 }
 const useStyles = makeStyles(() => ({
-  header: {
-    backgroundColor: "#08B2E3",
-  },
-title:{
-      fontWeight: 100,
-      padding: 10,
-    color: "#EFE9F4",
-    textAlign: "left",
-  },
+    header: {
+        backgroundColor: "#08B2E3",
+    },
+    title:{
+        fontSize: 40,
+        padding: 20,
+        color: "#fff",
+        textAlign: "left",
+    },
+    toolbar: {
+        display: "flex",
+        justifyContent: "space-between"
+    },
+    button: {
+        fontSize: 18,
+        padding: 15
+    }
 
 }));
 
