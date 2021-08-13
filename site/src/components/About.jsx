@@ -27,7 +27,7 @@ function About() {
                     gain financial power and literacy.
                 </p>
                 <p className="text-home fw-bold">
-                    So, we set out to think about how might we create an intutive and responsive tool
+                    So, we set out to think about how might we create an intuitive and responsive tool
                     to enable young adults to start their financial journey.
                 </p>
                 <p className="text-home">
