@@ -3,18 +3,20 @@ import Header from './Header';
 import {makeStyles, Button, TextField} from "@material-ui/core";
 import * as api from '../utils/api'
 import { useGlobalState } from '../state';
+import { loanPeriod, interestRate } from '../utils/constants';
 
 export default function NewTransaction() {
-    const loanPeriod = 1 // 1 year loan
-    const loanInterest  = 2 // 2 percent interest
-
     const classes = useStyles()
     const [globalStateValue, globalStateUpdate] = useGlobalState('username')
     const [transactionAmount, setTransactionAmount] = useState(0)
     const [user, setUser] = useState()
 
     const onSubmit = () => {
-        api.createTransaction(globalStateValue['username'], user.type === 'investor' ? 'investment' : 'loan', transactionAmount, loanPeriod, loanInterest)
+        api.createTransaction(globalStateValue['username'], user.type === 'investor' ? 'investment' : 'loan', transactionAmount, loanPeriod, interestRate)
+    }
+
+    const dueDate = (date) => {
+        return (date.getMonth() + 1) + '/' + date.getDate() + '/' + (date.getFullYear() + 1)
     }
 
     useEffect(() => {
@@ -38,6 +40,9 @@ export default function NewTransaction() {
                     variant="filled"
                     onChange={event => setTransactionAmount(event.target.value)}
                 />
+                <h4>Interest Rate: {interestRate}%</h4>
+                <h4>Total Due: {transactionAmount * (1 + interestRate / 100)}</h4>
+                <h4>Due: {dueDate(new Date())}</h4>
                 <Button onClick={onSubmit} variant="contained" color="primary" size = 'medium'>
                     Create Transaction
                 </Button>
