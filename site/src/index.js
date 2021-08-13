@@ -3,12 +3,14 @@ import ReactDOM from 'react-dom';
 import createRoutes from './routes.js'
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-
+import {BrowserRouter as Router } from "react-router-dom";
 const routes = createRoutes();
 
 ReactDOM.render(
   <React.StrictMode>
+    <Router>
     {routes}
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );
