@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route, Redirect, useLocation } from 'r
 import Home from './components/Home'
 import Login from './components/Login'
 import LoanApplication from "./components/LoanApplication";
+import AccountCreation from './components/AccountCreation'
 
 const createRoutes = () => (
     <Router>
@@ -24,9 +25,14 @@ const createRoutes = () => (
                 <LoanApplication />
             </Route>
 
+            <Route exact path ="/account-creation">
+                <AccountCreation />
+            </Route>
+
             <Route path="*">
                 <NoMatch />
             </Route>
+
         </Switch>
     </Router>
 );

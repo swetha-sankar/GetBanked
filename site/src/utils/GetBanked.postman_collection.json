@@ -1,0 +1,318 @@
+{
+	"info": {
+		"_postman_id": "8204dc5e-9ab2-415b-9f61-7ce10d977338",
+		"name": "GetBanked",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get All Accounts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://get-banked-62777-default-rtdb.firebaseio.com/accounts/.json",
+					"protocol": "https",
+					"host": [
+						"get-banked-62777-default-rtdb",
+						"firebaseio",
+						"com"
+					],
+					"path": [
+						"accounts",
+						".json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Account",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://get-banked-62777-default-rtdb.firebaseio.com/accounts/username.json",
+					"protocol": "https",
+					"host": [
+						"get-banked-62777-default-rtdb",
+						"firebaseio",
+						"com"
+					],
+					"path": [
+						"accounts",
+						"username.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Transaction",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://get-banked-62777-default-rtdb.firebaseio.com/transactions/192020.json",
+					"protocol": "https",
+					"host": [
+						"get-banked-62777-default-rtdb",
+						"firebaseio",
+						"com"
+					],
+					"path": [
+						"transactions",
+						"192020.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Transactions",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://get-banked-62777-default-rtdb.firebaseio.com/transactions/.json",
+					"protocol": "https",
+					"host": [
+						"get-banked-62777-default-rtdb",
+						"firebaseio",
+						"com"
+					],
+					"path": [
+						"transactions",
+						".json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Funds",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "100"
+				},
+				"url": {
+					"raw": "https://get-banked-62777-default-rtdb.firebaseio.com/funds/.json",
+					"protocol": "https",
+					"host": [
+						"get-banked-62777-default-rtdb",
+						"firebaseio",
+						"com"
+					],
+					"path": [
+						"funds",
+						".json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Withdrawals",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "100"
+				},
+				"url": {
+					"raw": "https://get-banked-62777-default-rtdb.firebaseio.com/withdrawals/.json",
+					"protocol": "https",
+					"host": [
+						"get-banked-62777-default-rtdb",
+						"firebaseio",
+						"com"
+					],
+					"path": [
+						"withdrawals",
+						".json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Account",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": {\n        \"id\": 283941,\n        \"type\": \"investor\",\n        \"name\": \"Alice Wang\",\n        \"email\": \"ayw2006@nyu.edu\",\n        \"password\": \"hello\",\n        \"total\": 5000,\n        \"transactions\": {\n            \"43500\": \"investment\"\n        }\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://get-banked-62777-default-rtdb.firebaseio.com/accounts/.json",
+					"protocol": "https",
+					"host": [
+						"get-banked-62777-default-rtdb",
+						"firebaseio",
+						"com"
+					],
+					"path": [
+						"accounts",
+						".json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Transaction",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"192020\": {\n        \"type\": \"investment\",\n        \"account\": 283941,\n        \"amount\": 5000,\n        \"period\": 24,\n        \"interest\": 2,\n        \"status\": \"active\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://get-banked-62777-default-rtdb.firebaseio.com/transactions/.json",
+					"protocol": "https",
+					"host": [
+						"get-banked-62777-default-rtdb",
+						"firebaseio",
+						"com"
+					],
+					"path": [
+						"transactions",
+						".json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Transactions",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"459282\": \"investment\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://get-banked-62777-default-rtdb.firebaseio.com/accounts/username/transactions/.json",
+					"protocol": "https",
+					"host": [
+						"get-banked-62777-default-rtdb",
+						"firebaseio",
+						"com"
+					],
+					"path": [
+						"accounts",
+						"username",
+						"transactions",
+						".json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Total",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "400"
+				},
+				"url": {
+					"raw": "https://get-banked-62777-default-rtdb.firebaseio.com/accounts/username/total/.json",
+					"protocol": "https",
+					"host": [
+						"get-banked-62777-default-rtdb",
+						"firebaseio",
+						"com"
+					],
+					"path": [
+						"accounts",
+						"username",
+						"total",
+						".json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Funds",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "100"
+				},
+				"url": {
+					"raw": "https://get-banked-62777-default-rtdb.firebaseio.com/funds/.json",
+					"protocol": "https",
+					"host": [
+						"get-banked-62777-default-rtdb",
+						"firebaseio",
+						"com"
+					],
+					"path": [
+						"funds",
+						".json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Withdrawals",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "50"
+				},
+				"url": {
+					"raw": "https://get-banked-62777-default-rtdb.firebaseio.com/withdrawals/.json",
+					"protocol": "https",
+					"host": [
+						"get-banked-62777-default-rtdb",
+						"firebaseio",
+						"com"
+					],
+					"path": [
+						"withdrawals",
+						".json"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
