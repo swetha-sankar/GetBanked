@@ -15,6 +15,10 @@ const headerData = [
         label: "About Us",
         href: "/about",
     },
+    {
+        label: "Manage Account",
+        href: "manage"
+    },
 ];
 
 
