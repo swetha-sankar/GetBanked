@@ -6,9 +6,13 @@ import Login from './components/Login'
 import LoanApplication from "./components/LoanApplication";
 import AccountCreation from './components/AccountCreation'
 import MyApplications from "./components/MyApplications";
+import Header from './components/Header'
+import Footer from './components/Footer'
+import About from './components/About'
 
 const createRoutes = () => (
     <Router>
+        <Header />
         <Switch>
             <Route exact path ="/home">
                 <Home />
@@ -34,11 +38,16 @@ const createRoutes = () => (
                 <AccountCreation />
             </Route>
 
+            <Route exact path="/about">
+                <About />
+            </Route>
+
             <Route path="*">
                 <NoMatch />
             </Route>
 
         </Switch>
+        <Footer />
     </Router>
 );
 
