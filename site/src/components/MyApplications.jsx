@@ -1,6 +1,6 @@
-import {useEffect, useRef, useState} from "react";
+import {useEffect, useState} from "react";
 import ApplicationItem from "./ApplicationItem";
-import {getAccount, getAllAccounts, getAllTransactions, getTransaction} from "../utils/api";
+import {getAccount, getTransaction} from "../utils/api";
 import {useGlobalState} from "../state";
 
 function MyApplications() {
