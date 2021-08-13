@@ -1,4 +1,4 @@
-###GetBanked
+# GetBanked
 This project was developed during the Capital One Software Engineering Summit (Aug 2021) as part of the hack-a-thon. 
 The theme of the hack-a-thon was to come up with an idea that would help change banking for good.
 
