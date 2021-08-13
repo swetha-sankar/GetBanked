@@ -8,6 +8,10 @@ const headerData = [
         href: "/home",
     },
     {
+        label: "New Transaction",
+        href: "/new-transaction",
+    },
+    {
         label: "Log In",
         href: "/login",
     },

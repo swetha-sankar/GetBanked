@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route, Redirect, useLocation } from 'r
 import Home from './components/Home'
 import Login from './components/Login'
 import AccountCreation from './components/AccountCreation'
+import NewTransaction from './components/NewTransaction'
 
 const createRoutes = () => (
     <Router>
@@ -22,6 +23,10 @@ const createRoutes = () => (
 
             <Route exact path ="/account-creation">
                 <AccountCreation />
+            </Route>
+
+            <Route exact path ="/new-transaction">
+                <NewTransaction />
             </Route>
 
             <Route path="*">
