@@ -19,7 +19,7 @@ const AccountCreation = () => {
     const [type, setType] = useState('investor')
 
     const onSubmit = () => {
-        console.log(api.createAccount(username, type, firstName + ' ' + lastName, email, pass))
+        console.log(api.createAccount(username, type, firstName + ' ' + lastName, email, pass, type === 'investor' ? 1000 : 0))
     };
     return (
         <>

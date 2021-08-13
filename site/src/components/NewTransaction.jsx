@@ -10,9 +10,11 @@ export default function NewTransaction() {
     const [globalStateValue, globalStateUpdate] = useGlobalState('username')
     const [transactionAmount, setTransactionAmount] = useState(0)
     const [user, setUser] = useState()
+    const [transactionComplete, setTransactionComplete] = useState(false)
 
     const onSubmit = () => {
         api.createTransaction(globalStateValue['username'], user.type === 'investor' ? 'investment' : 'loan', transactionAmount, loanPeriod, interestRate)
+        setTransactionComplete(true)
     }
 
     const dueDate = (date) => {
@@ -28,24 +30,38 @@ export default function NewTransaction() {
         return null
     }
 
+    if (!transactionComplete) {
+        return (
+            <>
+                <br />
+                <br />
+                <form className={classes.root}>
+                    <h1>Transactions</h1>
+                    <h2>New {user.type === 'investor' ? 'Investment' : 'Loan Application'}</h2>
+                    <TextField
+                        label="Transaction Amount"
+                        variant="filled"
+                        onChange={event => setTransactionAmount(event.target.value)}
+                    />
+                    <h4>Interest Rate: {interestRate}%</h4>
+                    <h4>Total Due: {transactionAmount * (1 + interestRate / 100)}</h4>
+                    <h4>Due: {dueDate(new Date())}</h4>
+                    <h4>Current Balance: {user.total}</h4>
+                    <h4>New Balance: {user.total + transactionAmount * (user.type === 'investor' ? -1 : 1)}</h4>
+                    <Button onClick={onSubmit} variant="contained" color="primary" size = 'medium'>
+                        Create Transaction
+                    </Button>
+                </form>
+            </>
+        )
+    }
+
     return (
         <>
             <br />
             <br />
             <form className={classes.root}>
-                <h1>Transactions</h1>
-                <h2>New {user.type === 'investor' ? 'Investment' : 'Loan Application'}</h2>
-                <TextField
-                    label="Transaction Amount"
-                    variant="filled"
-                    onChange={event => setTransactionAmount(event.target.value)}
-                />
-                <h4>Interest Rate: {interestRate}%</h4>
-                <h4>Total Due: {transactionAmount * (1 + interestRate / 100)}</h4>
-                <h4>Due: {dueDate(new Date())}</h4>
-                <Button onClick={onSubmit} variant="contained" color="primary" size = 'medium'>
-                    Create Transaction
-                </Button>
+                <h1>New Balance: {user.total + transactionAmount * (user.type === 'investor' ? -1 : 1)}</h1>
             </form>
         </>
     )
