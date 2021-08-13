@@ -10,7 +10,8 @@ const routes = createRoutes();
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
+    <Router basename={"/GetBanked"}>
+
     {routes}
     </Router>
   </React.StrictMode>,

@@ -12,7 +12,7 @@ import Footer from './components/Footer'
 import About from './components/About'
 
 const createRoutes = () => (
-    <Router>
+    <Router basename={"/GetBanked"}>
         <Header />
         <Switch>
             <Route exact path ="/home">
