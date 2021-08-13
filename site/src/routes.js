@@ -3,8 +3,10 @@ import { BrowserRouter as Router, Switch, Route, Redirect, useLocation } from 'r
 
 import Home from './components/Home'
 import Login from './components/Login'
+import LoanApplication from "./components/LoanApplication";
 import AccountCreation from './components/AccountCreation'
 import NewTransaction from './components/NewTransaction'
+import MyApplications from "./components/MyApplications";
 import Header from './components/Header'
 import Footer from './components/Footer'
 import About from './components/About'
@@ -23,6 +25,14 @@ const createRoutes = () => (
 
             <Route exact path="/">
                 <Redirect to="/home"/>
+            </Route>
+
+            <Route exact path="/apply">
+                <LoanApplication />
+            </Route>
+
+            <Route exact path="/manage">
+                <MyApplications />
             </Route>
 
             <Route exact path ="/account-creation">

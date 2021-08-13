@@ -22,7 +22,6 @@ const Login = () => {
     };
     return (
         <>
-            <Header/>
             <br/>
             <br/>
             <form className={classes.root}>
