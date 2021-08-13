@@ -1,16 +1,14 @@
 import {makeStyles} from "@material-ui/core";
-import Login from "./Login";
 
-function ApplicationItem(props) {
-
+function ApplicationItem({ txn }) {
     const classes = useStyles();
 
     return (
         <div className={classes.root}>
-            <p>{props.props.type.toUpperCase()}</p>
-            <p>{props.props.type} amount: {props.props.amount}</p>
-            <p>status: {props.props.status}</p>
-            <p>interest rate: {props.props.interest}%</p>
+            <p className="blurb-home">{txn.type.toUpperCase()}</p>
+            <p className="text-home mb-0">{txn.type} amount: {txn.amount}</p>
+            <p className="text-home mb-0">status: {txn.status}</p>
+            <p className="text-home">interest rate: {txn.interest}%</p>
         </div>
     )
 }
@@ -21,10 +19,11 @@ const useStyles = makeStyles(theme => ({
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
+        margin: theme.spacing(3),
         padding: theme.spacing(3),
 
-        border: "black",
-        borderStyle: "solid",
+        border: "2px solid #E38278",
+        borderRadius: "50px",
 
         '& .MuiTextField-root': {
             margin: theme.spacing(1),

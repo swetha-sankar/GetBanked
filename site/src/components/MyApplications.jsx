@@ -14,18 +14,20 @@ function MyApplications() {
             let transactions = []
             let account = await getAccount(globalStateValue["username"])
             let t = Object.keys(account.transactions)
-            for(let i = 0; i < t.length; i++) {
-                transactions.push(<ApplicationItem props={await getTransaction(t[i])} key={i}/>)
+            for(let i = 1; i < t.length; i++) {
+                transactions.push(<ApplicationItem txn={await getTransaction(t[i])} key={i}/>)
             }
             if(!loaded) setApplications(transactions)
             setLoaded(true)
         }
     }, [globalStateValue["username"]])
 
-    return (<div>
-        { applications }
-    </div>)
-
+    return (
+        <div>
+            <p className="blurb-home px-5 pb-0 pt-4">YOUR TRANSACTIONS</p>
+            { applications }
+        </div>
+    )
 }
 
 export default MyApplications;
