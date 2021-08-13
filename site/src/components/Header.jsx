@@ -8,12 +8,12 @@ const headerData = [
         href: "/account-creation",
     },
     {
-        label: "New Transaction",
-        href: "/new-transaction",
-    },
-    {
         label: "Log In",
         href: "/login",
+    },
+    {
+        label: "New Transaction",
+        href: "/new-transaction",
     },
     {
         label: "About Us",
