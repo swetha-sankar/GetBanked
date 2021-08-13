@@ -1,23 +1,21 @@
 import {useEffect, useRef, useState} from "react";
-import {applyForLoan, getLoanApplications} from "../utils/database";
 import ApplicationItem from "./ApplicationItem";
+import {getAccount, getAllAccounts, getAllTransactions, getTransaction} from "../utils/api";
 
 function MyApplications() {
 
-    const loanAmount = useRef(HTMLInputElement)
-    const loanDescription = useRef(HTMLTextAreaElement)
-
     const [applications, setApplications] = useState([])
+    const [loaded, setLoaded] = useState(false)
 
-    //TODO: make the account type check work
-    // if(accountType != Accounts.BORROWER) return <Redirect to="/home"/>
-
-    useEffect(() => {
-        let apps = getLoanApplications()
-        for(let i = 0; i < applications.length; i++) {
-            apps.push(<ApplicationItem children={}/>)
+    useEffect(async () => {
+        let transactions = []
+        let account = await getAccount("rohan")
+        let t = Object.keys(account.transactions)
+        for(let i = 0; i < t.length; i++) {
+            transactions.push(<ApplicationItem props={await getTransaction(t[i])} key={i}/>)
         }
-        setApplications(apps)
+        if(!loaded) setApplications(transactions)
+        setLoaded(true)
     }, ["username"]) //TODO: create dependency for username
 
     return (<div>
