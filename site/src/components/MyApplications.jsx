@@ -10,14 +10,16 @@ function MyApplications() {
     const [globalStateValue, globalStateUpdate] = useGlobalState('username');
 
     useEffect(async () => {
-        let transactions = []
-        let account = await getAccount(globalStateValue["username"])
-        let t = Object.keys(account.transactions)
-        for(let i = 0; i < t.length; i++) {
-            transactions.push(<ApplicationItem props={await getTransaction(t[i])} key={i}/>)
+        if (globalStateValue !== '') {
+            let transactions = []
+            let account = await getAccount(globalStateValue["username"])
+            let t = Object.keys(account.transactions)
+            for(let i = 0; i < t.length; i++) {
+                transactions.push(<ApplicationItem props={await getTransaction(t[i])} key={i}/>)
+            }
+            if(!loaded) setApplications(transactions)
+            setLoaded(true)
         }
-        if(!loaded) setApplications(transactions)
-        setLoaded(true)
     }, [globalStateValue["username"]])
 
     return (<div>

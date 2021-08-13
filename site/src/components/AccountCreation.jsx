@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import logo from '../assets/c1logo.png';
 import {makeStyles, Button, TextField, Select} from "@material-ui/core";
+import { useLocation } from 'react-router-dom';
+
 import Header from '../components/Header';
 import * as api from '../utils/api'
 
@@ -10,13 +12,22 @@ import * as api from '../utils/api'
  */
 const AccountCreation = () => {
     const classes = useStyles();
+
+    const location = useLocation();
+    let accountType = "investor";
+    if (location.state) {
+        if (location.state.type === "borrower") {
+            accountType = "borrower";
+        }
+    }
+
     // Set form elements
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [username, setUsername] = useState('');
     const [pass, setPass] = useState('');
-    const [type, setType] = useState('investor')
+    const [type, setType] = useState(accountType);
 
     const onSubmit = () => {
         console.log(api.createAccount(username, type, firstName + ' ' + lastName, email, pass))

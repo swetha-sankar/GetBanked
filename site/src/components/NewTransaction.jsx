@@ -5,7 +5,7 @@ import * as api from '../utils/api'
 import { useGlobalState } from '../state';
 
 export default function NewTransaction() {
-    const loanPeriod = 1 // 1 year loan
+    const loanPeriod = 12 // 12 month loan
     const loanInterest  = 2 // 2 percent interest
 
     const classes = useStyles()

@@ -1,23 +1,35 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 
 function Home() {
     return (
         <div className="container w-100">
             <div className="p-5 row">
                 <div className="light col-1"></div>
-                <div className="px-3 m-auto blurb-home col-5 py-5">
-                    <p>
-                        Looking to get more involved with banking and your finances 
+                <div className="ps-3 m-auto blurb-home col-7 py-5">
+                    <p className="w-75">
+                        Looking to get more involved your finances 
                         but don't know where to start?
                     </p>
-                    <p>We have options for people looking to invest and borrow!</p>
+                    <p className="w-75">We have options for people looking to invest and borrow!</p>
                 </div>
-                <div className="px-3 col-6 m-auto py-5">
+                <div className="ps-3 col-4 m-auto py-5">
                     <div className="d-flex flex-column">
                         <p className="blurb-home">Get Started Here</p>
-                        <p>Are you looking to...</p>
-                        <button type="button" className="btn btn-light mb-3 button-bright w-50">Invest</button>
-                        <button type="button" className="btn btn-light button-bright w-50">Borrow</button>
+                        <Link to={{
+                                pathname: "/account-creation",
+                                state: { type: "investor"}
+                            }}
+                        >
+                            <button type="button" className="btn btn-light mb-3 button-bright w-50">Invest</button>
+                        </Link>
+                        <Link to={{
+                                pathname: "/account-creation",
+                                state: { type: "borrower"}
+                            }}
+                        >
+                            <button type="button" className="btn btn-light button-bright w-50">Borrow</button>
+                        </Link>
                     </div>
                 </div>
             </div>
