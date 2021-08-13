@@ -1,45 +1,101 @@
-import React, {useRef, useState} from 'react';
-import {authenticateAccount} from "../utils/database";
-import {Accounts} from "../types/accounts";
-import {Redirect, Route} from "react-router-dom";
+import React, {useState, useEffect} from 'react';
+import logo from '../assets/c1logo.png';
+import {makeStyles, createStyles, Button, TextField} from "@material-ui/core";
+import {useForm, Controller} from "react-hook-form";
+import Header from '../components/Header';
 
-function Login(){
-    const [errorMessage, setErrorMessage] = useState("")
+/**
+ * Login
+ *
+ */
 
-    const usernameRef = useRef(HTMLInputElement)
-    const passwordRef = useRef(HTMLInputElement)
-    const accountTypeRef = useRef(HTMLSelectElement)
 
-    // if(loggedIn) {
-    //     return <Redirect to={"/home/"}/>
-    // }
+const Login = () => {
+    const classes = useStyles();
+    // React hook form
+    const {handleSubmit, control} = useForm();
+    // Set form elements
+    const [username, setUsername] = useState('');
+    const [pass, setPass] = useState('');
 
-    const login = () => {
-        if(usernameRef == null || passwordRef == null || accountTypeRef == null) return
-        if (authenticateAccount(usernameRef.current.value, passwordRef.current.value, accountTypeRef.current.value)) {
-            // setUsername(usernameRef.current.value)
-            // setPassword(usernameRef.current.value)
-            // setLoggedIn(true)
-        //    redirect to homepage
-        } else {
-            setErrorMessage("Login Failed, please try again")
-        }
-    }
-
+    const onSubmit = data => {
+        console.log(data);
+    };
     return (
-        <div>
-            <p>What kind of account do you have?</p>
-            <select ref={accountTypeRef}>
-                <option value={Accounts.ADMIN}>Admin</option>
-                <option value={Accounts.BORROWER}>Borrower</option>
-                <option value={Accounts.INVESTOR}>Investor</option>
-            </select>
-            <p> Enter Username </p> <input ref={usernameRef} type={"text"}/>
-            <p> Enter Password</p> <input ref={passwordRef} type={"password"}/>
-            <h1>{errorMessage}</h1>
-            <button onClick={login}>Login</button>
-        </div>
+        <>
+            <Header/>
+            <br/>
+            <br/>
+            <form className={classes.root} onSubmit={handleSubmit(onSubmit)}>
+                <h1>Login</h1>
+                <Controller
+                    name="username"
+                    control={control}
+                    defaultValue=""
+                    render={({field: {onChange, value}, fieldState: {error}}) => (
+                        <TextField
+                            label="Username"
+                            variant="filled"
+                            value={value}
+                            onChange = {onChange}
+                            onChangeText={text => setUsername({username: text})}
+                            error={!!error}
+                            helperText={error ? error.message : null}
+                        />
+                    )}
+                    rules={{required: 'Username required'}}
+                />
+                <Controller
+                    name="password"
+                    control={control}
+                    defaultValue=""
+                    render={({field: {onChange, value}, fieldState: {error}}) => (
+                        <TextField
+                            underlineShow={false}
+                            required
+                            value={value}
+                            variant="filled"
+                            type={'password'}
+                            onChange = {onChange}
+                            placeholder={'Password'}
+                            helperText={error ? error.message : null}
+                            error={!!error}
+                            onChangeText={text => setPass({pass: text})}
+                            inputStyle={{color: 'white', padding: '0 25px'}}
+                        />
+
+                    )}
+                    rules={{required: 'Password required'}}
+                />
+
+
+                <Button variant="contained" color="primary" size = 'medium'>
+                    Submit
+                </Button>
+            </form>
+        </>
     );
 }
 
+const useStyles = makeStyles(theme => ({
+    root: {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: theme.spacing(3),
+
+
+        '& .MuiTextField-root': {
+            margin: theme.spacing(1),
+            width: '300px',
+            borderRadius: 20,
+
+        },
+        '& .MuiButtonBase-root': {
+            margin: theme.spacing(2),
+
+        },
+    },
+}));
 export default Login;
