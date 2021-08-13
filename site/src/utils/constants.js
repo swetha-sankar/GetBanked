@@ -1,2 +1,2 @@
-export const loanPeriod = 1
+export const loanPeriod = 12
 export const interestRate = 2

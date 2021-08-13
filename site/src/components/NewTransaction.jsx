@@ -17,6 +17,7 @@ export default function NewTransaction() {
         setTransactionComplete(true)
     }
 
+    // Due 12 months later (1 year)
     const dueDate = (date) => {
         return (date.getMonth() + 1) + '/' + date.getDate() + '/' + (date.getFullYear() + 1)
     }
