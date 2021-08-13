@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind+Madurai&family=Lora&family=Montserrat&display=swap');
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -45,3 +47,49 @@ code {
         transform: rotate(360deg);
     }
 }
+
+.light {
+    background-color: #EFE9F4;
+}
+
+.green {
+    background-color: #BCF47C;
+}
+
+.blue {
+    background-color: #08B2E3;
+}
+
+.pink {
+    background-color: #E38278;
+}
+
+.blurb-home {
+    font-size: 24px;
+    font-family: "Montserrat", sans-serif;
+}
+
+.text-home {
+    font-size: 18px;
+    font-family: "Lora", serif;
+}
+
+.text-about {
+    font-size: 16px;
+    font-family: "Hind Madurai", sans-serif;
+}
+
+.button-bright {
+    background-color: #FFA737 !important;
+    border-radius: 50px !important;
+
+}
+
+.headshot {
+    width: 125px;
+    border-radius: 50%;
+}
+
+.logo {
+    width: 25px;
+  }

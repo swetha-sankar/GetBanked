@@ -23,7 +23,6 @@ const AccountCreation = () => {
     };
     return (
         <>
-            <Header/>
             <br/>
             <br/>
             <form className={classes.root}>
