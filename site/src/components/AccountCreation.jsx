@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import logo from '../assets/c1logo.png';
 import {makeStyles, createStyles, Button, TextField} from "@material-ui/core";
 import {useForm, Controller} from "react-hook-form";
+import Header from '../components/Header';
 
 /**
  * Account creation form
@@ -24,6 +25,9 @@ const AccountCreation = ({accountType}) => {
     };
     return (
         <>
+            <Header/>
+            <br/>
+            <br/>
             <form className={classes.root} onSubmit={handleSubmit(onSubmit)}>
                 <h1>Create Account</h1>
                 <h2> {accountType}</h2>

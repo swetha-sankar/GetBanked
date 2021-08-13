@@ -23,7 +23,7 @@ const headerData = [
 
 
 export default function Header() {
-    const { header, logo } = useStyles();
+    const { header, title } = useStyles();
     const displayDesktop = () => {
         return (
             <Toolbar>
@@ -34,7 +34,7 @@ export default function Header() {
     };
 
     const appTitle = (
-        <Typography variant="h3" component="h1" className={logo}>
+        <Typography variant="h3" component="h1" className={title}>
             GetBanked
         </Typography>
     );
@@ -62,11 +62,12 @@ export default function Header() {
 }
 const useStyles = makeStyles(() => ({
   header: {
-    backgroundColor: "#EFE9F4",
+    backgroundColor: "#08B2E3",
   },
-  logo: {
-    fontWeight: 100,
-    color: "#08B2E3",
+title:{
+      fontWeight: 100,
+      padding: 10,
+    color: "#EFE9F4",
     textAlign: "left",
   },
 
