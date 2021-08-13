@@ -3,6 +3,29 @@ import React from "react";
 import {Link} from "react-router-dom";
 import {useGlobalState} from "../state";
 
+const headerData = [
+    {
+        label: "Create Account",
+        href: "/account-creation",
+    },
+    {
+        label: "Log In",
+        href: "/login",
+    },
+    {
+        label: "New Transaction",
+        href: "/new-transaction",
+    },
+    {
+        label: "About Us",
+        href: "/about",
+    },
+    {
+        label: "Manage Account",
+        href: "manage"
+    },
+];
+
 export default function Header() {
     const [globalStateValue, globalStateUpdate] = useGlobalState('username');
     const { header, title, toolbar, button } = useStyles();

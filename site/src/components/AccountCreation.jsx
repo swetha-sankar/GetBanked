@@ -30,7 +30,7 @@ const AccountCreation = () => {
     const [type, setType] = useState(accountType);
 
     const onSubmit = () => {
-        console.log(api.createAccount(username, type, firstName + ' ' + lastName, email, pass))
+        console.log(api.createAccount(username, type, firstName + ' ' + lastName, email, pass, type === 'investor' ? 1000 : 0))
     };
     return (
         <>
@@ -38,11 +38,6 @@ const AccountCreation = () => {
             <br/>
             <form className={classes.root}>
                 <h1>Create Account</h1>
-                <TextField
-                    label="First Name"
-                    variant="filled"
-                    onChange={event => setFirstName(event.target.value)}
-                />
                 <Select
                     label="Account Type"
                     defaultValue={type}
@@ -51,6 +46,11 @@ const AccountCreation = () => {
                     <option value="investor">Investor</option>
                     <option value="borrower">Borrower</option>
                 </Select>
+                <TextField
+                    label="First Name"
+                    variant="filled"
+                    onChange={event => setFirstName(event.target.value)}
+                />
                 <TextField
                     label="Last Name"
                     variant="filled"

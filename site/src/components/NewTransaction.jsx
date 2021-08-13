@@ -3,48 +3,66 @@ import Header from './Header';
 import {makeStyles, Button, TextField} from "@material-ui/core";
 import * as api from '../utils/api'
 import { useGlobalState } from '../state';
+import { loanPeriod, interestRate } from '../utils/constants';
 
 export default function NewTransaction() {
-    const loanPeriod = 12 // 12 month loan
-    const loanInterest  = 2 // 2 percent interest
-
     const classes = useStyles()
     const [globalStateValue, globalStateUpdate] = useGlobalState('username')
     const [transactionAmount, setTransactionAmount] = useState(0)
     const [user, setUser] = useState()
+    const [transactionComplete, setTransactionComplete] = useState(false)
 
     const onSubmit = () => {
-        api.createTransaction(globalStateValue['username'], user.type === 'investor' ? 'investment' : 'loan', transactionAmount, loanPeriod, loanInterest)
+        api.createTransaction(globalStateValue['username'], user.type === 'investor' ? 'investment' : 'loan', transactionAmount, loanPeriod, interestRate)
+        setTransactionComplete(true)
+    }
+
+    // Due 12 months later (1 year)
+    const dueDate = (date) => {
+        return (date.getMonth() + 1) + '/' + date.getDate() + '/' + (date.getFullYear() + 1)
     }
 
     useEffect(() => {
-        console.log('useEffect started')
         api.getAccount(globalStateValue['username'])
             .then(userData => setUser(userData))
-        console.log(user)
-        console.log('useEffect finished')
     }, [globalStateValue['username']])
 
     if (!user) {
         return null
     }
 
+    if (!transactionComplete) {
+        return (
+            <>
+                <br />
+                <br />
+                <form className={classes.root}>
+                    <h1>Transactions</h1>
+                    <h2>New {user.type === 'investor' ? 'Investment' : 'Loan Application'}</h2>
+                    <TextField
+                        label="Transaction Amount"
+                        variant="filled"
+                        onChange={event => setTransactionAmount(event.target.value)}
+                    />
+                    <h4>Interest Rate: {interestRate}%</h4>
+                    <h4>Total Due: {transactionAmount * (1 + interestRate / 100)}</h4>
+                    <h4>Due: {dueDate(new Date())}</h4>
+                    <h4>Current Balance: {user.total}</h4>
+                    <h4>New Balance: {user.total + transactionAmount * (user.type === 'investor' ? -1 : 1)}</h4>
+                    <Button onClick={onSubmit} variant="contained" color="primary" size = 'medium'>
+                        Create Transaction
+                    </Button>
+                </form>
+            </>
+        )
+    }
+
     return (
         <>
-            <Header />
             <br />
             <br />
             <form className={classes.root}>
-                <h1>Transactions</h1>
-                <h2>New {user.type === 'investor' ? 'Investment' : 'Loan Application'}</h2>
-                <TextField
-                    label="Transaction Amount"
-                    variant="filled"
-                    onChange={event => setTransactionAmount(event.target.value)}
-                />
-                <Button onClick={onSubmit} variant="contained" color="primary" size = 'medium'>
-                    Create Transaction
-                </Button>
+                <h1>New Balance: {user.total + transactionAmount * (user.type === 'investor' ? -1 : 1)}</h1>
             </form>
         </>
     )

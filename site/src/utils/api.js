@@ -95,7 +95,7 @@ export async function getWithdrawals () {
  * @param {String} password account password
  * @returns JSON object of account information
  */
-export async function createAccount (username, type, name, email, password) {
+export async function createAccount (username, type, name, email, password, total) {
     const allAccounts = await getAllAccounts();
     const accountNum = Object.keys(allAccounts).length + 1;
 
@@ -111,7 +111,7 @@ export async function createAccount (username, type, name, email, password) {
           "name": name,
           "email": email,
           "password": password,
-          "total": 0,
+          "total": total,
           "transactions": {
             "0": "account creation"
           }
